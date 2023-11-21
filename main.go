@@ -24,7 +24,7 @@ func main() {
 	output += ternaryString(day > 0, fmt.Sprintf("%dd ", day), "")
 	output += ternaryString(hour > 0, fmt.Sprintf("%dh ", hour), "")
 	output += ternaryString(minute > 0, fmt.Sprintf("%dm ", minute), "")
-	output += ternaryString(second != 0, fmt.Sprintf("%ds ", second), "")
+	output += ternaryString(second >= 0, fmt.Sprintf("%ds ", second), "")
 
 	fmt.Println(output)
 }
