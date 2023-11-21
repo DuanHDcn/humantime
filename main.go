@@ -6,10 +6,10 @@ import (
 )
 
 func main() {
-	secondPtr := flag.Int64("second", 0, "-second=digit")
+	secondPtr := flag.Int64("second", -1, "-second=digit")
 	flag.Parse()
 
-	if secondPtr == nil || *secondPtr == 0 {
+	if secondPtr == nil || *secondPtr < 0 {
 		fmt.Println("[Usage] humantime -second=digit")
 		return
 	}
@@ -24,7 +24,7 @@ func main() {
 	output += ternaryString(day > 0, fmt.Sprintf("%dd ", day), "")
 	output += ternaryString(hour > 0, fmt.Sprintf("%dh ", hour), "")
 	output += ternaryString(minute > 0, fmt.Sprintf("%dm ", minute), "")
-	output += ternaryString(second > 0, fmt.Sprintf("%ds ", second), "")
+	output += ternaryString(second != 0, fmt.Sprintf("%ds ", second), "")
 
 	fmt.Println(output)
 }
